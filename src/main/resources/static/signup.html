@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>neural.net - Sign Up</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Merriweather|Merriweather+Sans|Nunito:700&display=swap" rel="stylesheet">
+
+</head>
+<body class="unselectable">
+    <header>
+        <div class="container">
+            <div class="header__inner">
+                <div id="logo">
+                    <img src="/img/logo_icon.png" alt="">
+                    <a href="/">neaural.net</a>
+                </div>
+
+                <nav class="menu">
+                    <ul class="menu__list">
+                        <li><a href="localhost:8080">Главная</a></li>
+                        <li><a href="/article">Статьи</a></li>
+                        <li><a href="">Форум</a></li>
+                        <li><a href="">F.A.Q.</a></li>
+                    </ul>
+                </nav>
+
+                <div id="login">
+                    <a href="#reg">Войти</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h1>Регистрация</h1>
+            <div class="form__outer">
+                <form>
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password">
+                    </div>
+
+                    <div class="field">
+                        <label for="repeat_password">Repeat Password:</label>
+                        <input type="password" id="repeat_password">
+                    </div>
+
+                    <div class="field">
+                        <label for="role">Role:</label>
+                        <select name="role" id="role">
+                            <option value="Обычный пользователь">Обычный пользователь</option>
+                            <option value="">Кто-то еще</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="education">Образование:</label>
+                        <select name="education" id="education">
+                            <option value="non-selected">Не выбрано</option>
+                            <option value="pre-schooler">Дошкольник</option>
+                            <option value="schooler">Школьник</option>
+                            <option value="student">Студент</option>
+                            <option value="bachelor">Бакалавр</option>
+                            <option value="master">Магистр</option>
+                            <option value="phd">Аспирант</option>
+                            <option value="professor">Профессор</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="studying">Обучаюсь в данный момент</label>
+                        <input type="checkbox" id="studying">
+                    </div>
+
+                    <div class="field">
+                        <label for="profession">Выберите интересные направления:</label>
+                        <select name="profession" id="profession">
+                            <option value="non-selected">Не выбрано</option>
+                            <option value="no-job">Безработный</option>
+                            <option value="no-job">IT</option>
+                            <option value="no-job">Лингвистика</option>
+                            <option value="no-job">Дизайн</option>
+                            <option value="no-job">Искусство</option>
+                            <option value="no-job">Наука</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="agree">Даю согласие на обработку персональных данных</label>
+                        <input type="checkbox" id="agree">
+                    </div>
+
+                    <button>Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
