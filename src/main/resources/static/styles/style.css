@@ -218,9 +218,32 @@ label {
 	font-family: nunito, serif;
 	text-align: justify;
 }
+<!---->
+
+.warning {
+	background-color: #ffc0cd;
+	/*background: transparent url(/img/warn_red.gif) no-repeat scroll 14px 13px;*/
+	padding: 2px 0 0 27px;
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 7px;
+	border: 1px solid #D3D5C3;
+	border-radius: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+	padding: 14px 20px 6px 48px;
+	min-height: 30px;
+	max-width: 600px;
+	color: #CC2244;
+}
+
+<!---->
 
 .article {
 	line-height: 1.5;
+}
+
+.article>p {
+	padding-bottom: 10px;
 }
 
 .article>.caption {
@@ -239,4 +262,8 @@ label {
 
 .article__info>a {
 	color: #043A6B;
+}
+
+.article__info>a:hover {
+	color:#CC2244;
 }

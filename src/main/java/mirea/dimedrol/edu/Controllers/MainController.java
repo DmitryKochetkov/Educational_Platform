@@ -1,14 +1,15 @@
-package mirea.dimedrol.edu;
+package mirea.dimedrol.edu.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping("/")
 public class MainController {
-    @GetMapping("/")
+    @GetMapping
     public String mainpage() {
         return "index.html";
     }
