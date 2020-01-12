@@ -13,14 +13,14 @@
 	<div class="overlay" id="reg">
 		<div class="popup">
 			<h1>Вход</h1>
-			<form action="/signin">
+			<form action="/auth" method="post">
 				<div class="field">
 					<label for="email">Email:</label>
-					<input type="email" id="email">
+					<input type="email" id="email" name="login">
 				</div>
 				<div class="field">
 					<label for="password">Password:</label>
-					<input type="password" id="password">
+					<input type="password" id="password" name="passwd">
 				</div>
 				<div>
 					<input type="checkbox" id="remember">
@@ -33,7 +33,7 @@
 			<br>
 			Нет аккаунта? <a href="/signup">Регистрация</a>
 		</div>
-		<div class="close-popup"></div>
+		<div class="close-popup">X</div>
 	</div>
 
 	<header>
@@ -46,7 +46,7 @@
 
 				<nav class="menu">
 					<ul class="menu__list">
-						<li><a href="localhost:8080">Главная</a></li>
+						<li><a href="/">Главная</a></li>
 						<li><a href="/article">Статьи</a></li>
 						<li><a href="">Форум</a></li>
 						<li><a href="">F.A.Q.</a></li>
