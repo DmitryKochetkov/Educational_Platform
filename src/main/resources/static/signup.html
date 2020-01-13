@@ -19,10 +19,10 @@
 
                 <nav class="menu">
                     <ul class="menu__list">
-                        <li><a href="localhost:8080">Главная</a></li>
+                        <li><a href="/">Главная</a></li>
                         <li><a href="/article">Статьи</a></li>
-                        <li><a href="">Форум</a></li>
-                        <li><a href="">F.A.Q.</a></li>
+                        <li><a href="/forum">Форум</a></li>
+                        <li><a href="/faq">F.A.Q.</a></li>
                     </ul>
                 </nav>
 
@@ -60,6 +60,9 @@
                             <option value="">Кто-то еще</option>
                         </select>
                     </div>
+
+                    <div class="warning">
+                        Для ученых степеней необходимо подтвердить статус документально.</div>
 
                     <div class="field">
                         <label for="education">Образование:</label>
@@ -104,6 +107,13 @@
         </div>
     </section>
 
-
+    <script>
+        document.getElementById("education").onchange = function () {
+            if (document.getElementById("education").options.selectedIndex > 3) {
+                document.getElementById("warning").display = none;
+            }
+            else document.getElementById("warning").display = block;
+        }
+    </script>
 </body>
 </html>

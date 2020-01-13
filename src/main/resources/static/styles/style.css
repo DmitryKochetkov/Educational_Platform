@@ -267,16 +267,15 @@ label {
 <!---->
 
 .warning {
-	background-color: #ffc0cd;
-	/*background: transparent url(/img/warn_red.gif) no-repeat scroll 14px 13px;*/
-	padding: 2px 0 0 27px;
+	background: transparent url(/img/warn_icon.gif) no-repeat scroll 14px 13px;
+	padding: 10px 50px;
 	font-size: 14px;
 	font-weight: bold;
-	padding-bottom: 7px;
+	/*padding-bottom: 7px;*/
 	border: 1px solid #D3D5C3;
 	border-radius: 5px 5px 5px 5px;
 	margin-bottom: 5px;
-	padding: 14px 20px 6px 48px;
+	/*padding: 14px 20px 6px 48px;*/
 	min-height: 30px;
 	max-width: 600px;
 	color: #CC2244;
