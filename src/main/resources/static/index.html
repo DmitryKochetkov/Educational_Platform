@@ -12,28 +12,32 @@
 	<!--Test: reg form-->
 	<div class="overlay" id="reg">
 		<div class="popup">
-			<h1>Вход</h1>
-			<form action="/auth" method="post">
-				<div class="field">
-					<label for="email">Email:</label>
-					<input type="email" id="email" name="login">
-				</div>
-				<div class="field">
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="passwd">
-				</div>
-				<div>
-					<input type="checkbox" id="remember">
-					<label for="remember">Запомнить на этом устройстве</label>
-				</div>
-				<div>
-					<button type="submit">Войти</button>
-				</div>
-			</form>
-			<br>
-			Нет аккаунта? <a href="/signup">Регистрация</a>
+			<div class="popup__content">
+				<h1>Вход</h1>
+				<form action="/auth" method="post">
+					<div class="field">
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="login">
+					</div>
+					<div class="field">
+						<label for="password">Password:</label>
+						<input type="password" id="password" name="passwd">
+					</div>
+					<div>
+						<input type="checkbox" id="remember">
+						<label for="remember">Запомнить на этом устройстве</label>
+					</div>
+					<div>
+						<button type="submit">Войти</button>
+					</div>
+				</form>
+				<br>
+				Нет аккаунта? <a href="/signup">Регистрация</a>
+			</div>
+			<div class="close-popup">
+				<a href="#close" title="Close" class="close">×</a>
+			</div>
 		</div>
-		<div class="close-popup">X</div>
 	</div>
 
 	<header>
@@ -46,7 +50,7 @@
 
 				<nav class="menu">
 					<ul class="menu__list">
-						<li><a href="/">Главная</a></li>
+						<li><a href="localhost:8080">Главная</a></li>
 						<li><a href="/article">Статьи</a></li>
 						<li><a href="">Форум</a></li>
 						<li><a href="">F.A.Q.</a></li>
