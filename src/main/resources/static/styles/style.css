@@ -21,12 +21,23 @@ h1 {
 a {
 	color: #000;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 input {
 	border-radius: 3px;
 	font-family: 'Merriweather', serif;
 	font-size: 16pt;
+}
+
+button {
+	background-color: #043A6B;
+	color: white;
+	font-family: nunito;
+	font-size: 16px;
+	border-radius: 10px;
+	padding: 5px 20px;
+	cursor: pointer;
 }
 
 select {
@@ -38,17 +49,6 @@ select {
 	border-radius: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
-}
-
-/*Test*/
-
-.overlay {
-	position: absolute;
-	width: 100%;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	display: none;
 }
 
 label {
@@ -66,12 +66,7 @@ label {
 	float: left;
 }
 
-.overlay {
-	background: rgba(0, 0, 0, 0.5);
-}
-
-.overlay:target {display: block;}
-
+/*
 .popup {
 	position: absolute;
 	width: 500px;
@@ -85,13 +80,53 @@ label {
 	line-height: 1.5;
 }
 
-.close-popup {
+.close {
+	float: right;
+	font-family: sans-serif;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	opacity: .5;
+	text-decoration: none;
+}
+
+
+*/
+
+.overlay {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+@media (min-width: 768px) {
+	.modal-content {
+		-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+		box-shadow: 0 5px 15px rgba(0,0,0,.5);
+	}
+}
+
+.popup {
 	position: absolute;
-	top: 15px;
-	right: 15px;
-	left: 20px;
-	right: 20px;
-	cursor: pointer;
+	width: 50%;
+	/*margin: 15% auto;*/
+	/*left: 50%;*/
+	/*top: 50%;*/
+	transform: translate(50%, 50%);
+	padding: 40px;
+	background-color: #fff;
+	border: 1px solid #888;
+	color: #000000;
+	line-height: 1.5;
 }
 
 .popup__content {
@@ -109,26 +144,24 @@ label {
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
 	outline: 0;
+	padding: 30px;
 }
-@media (min-width: 768px) {
-	.modal-content {
-		-webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
-		box-shadow: 0 5px 15px rgba(0,0,0,.5);
-	}
+
+.close-popup {
+	position: absolute;
+	top: 15px;
+	/*right: 15px;*/
+	left: 20px;
+	right: 20px;
+	cursor: pointer;
 }
 
 .close {
 	float: right;
-	font-family: sans-serif;
-	font-size: 24px;
-	font-weight: 700;
-	line-height: 1;
-	color: #000;
-	text-shadow: 0 1px 0 #fff;
-	opacity: .5;
-	text-decoration: none;
+	font-size: 28px;
+	font-weight: bold;
 }
-/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+
 .close:focus, .close:hover {
 	color: #000;
 	text-decoration: none;
@@ -136,7 +169,7 @@ label {
 	opacity: .75;
 }
 
-.popup__content>h1, .popup__content>a {
+.popup__content>a {
 	color: #C24;
 	font-family: nunito;
 	font-weight: 600;

@@ -8,9 +8,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Merriweather|Merriweather+Sans|Nunito:700&display=swap" rel="stylesheet">
 </head>
 <body class="unselectable">
-
-	<!--Test: reg form-->
-	<div class="overlay" id="reg">
+2
+	<div class="overlay" id="overlay_reg">
 		<div class="popup">
 			<div class="popup__content">
 				<h1>Вход</h1>
@@ -27,6 +26,7 @@
 						<input type="checkbox" id="remember">
 						<label for="remember">Запомнить на этом устройстве</label>
 					</div>
+					<div class="warning">Неверное имя пользователя или пароль!</div>
 					<div>
 						<button type="submit">Войти</button>
 					</div>
@@ -35,7 +35,7 @@
 				Нет аккаунта? <a href="/signup">Регистрация</a>
 			</div>
 			<div class="close-popup">
-				<a href="#close" title="Close" class="close">×</a>
+				<a title="Close" class="close">&times;</a>
 			</div>
 		</div>
 	</div>
@@ -57,12 +57,31 @@
 					</ul>	
 				</nav>
 
-				<div id="login">
-					<a href="#reg">Войти</a>
+				<div id="login_section">
+					<a id="login_button">Войти</a>
 				</div>
 			</div>
 		</div>
 	</header>
+
+	<script>
+		var reg = document.getElementById("overlay_reg");
+		var btn = document.getElementById("login_button");
+		var close = document.getElementsByClassName("close")[0];
+		btn.onclick = function () {
+			reg.style.display = "block";
+		};
+
+		close.onclick = function () {
+			reg.style.display = "none";
+		};
+
+		window.onclick = function (event) {
+			if (event.target == reg) {
+				reg.style.display = "none";
+			}
+		}
+	</script>
 
 	<section id="about">
 		<div class="container">
@@ -118,5 +137,16 @@
 			</div>
 		</div>
 	</section>
+	<!--
+	<script>
+		document.getElementById("login").onclick = function () {
+			document.getElementById("overlay_reg").style.display = "block";
+		}
+
+		document.getElementById("close").onclick = function () {
+			document.getElementById("overlay_reg").style.display = "none";
+		}
+	</script>
+	-->
 </body>
 </html>
