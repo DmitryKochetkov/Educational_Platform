@@ -55,18 +55,18 @@
 
                     <div class="field">
                         <label for="role">Role:</label>
-                        <select name="role" id="role" name="role">
+                        <select name="role" id="role">
                             <option value="Обычный пользователь">Обычный пользователь</option>
                             <option value="">Кто-то еще</option>
                         </select>
                     </div>
 
-                    <div class="warning">
+                    <div class="warning" id="education_warning">
                         Для ученых степеней необходимо подтвердить статус документально.</div>
 
                     <div class="field">
                         <label for="education">Образование:</label>
-                        <select name="education" id="education" name="education">
+                        <select name="education" id="education">
                             <option value="non-selected">Не выбрано</option>
                             <option value="pre-schooler">Дошкольник</option>
                             <option value="schooler">Школьник</option>
@@ -85,7 +85,7 @@
 
                     <div class="field">
                         <label for="profession">Выберите интересные направления:</label>
-                        <select name="profession" id="profession" name="preofession">
+                        <select name="profession" id="profession">
                             <option value="non-selected">Не выбрано</option>
                             <option value="no-job">Безработный</option>
                             <option value="no-job">IT</option>
@@ -108,11 +108,13 @@
     </section>
 
     <script>
-        document.getElementById("education").onchange = function () {
-            if (document.getElementById("education").options.selectedIndex > 3) {
-                document.getElementById("warning").display = none;
+        document.getElementById('education_warning').style.display = "none";
+        document.getElementById('education').onchange = function () {
+            if (document.getElementById('education').options.selectedIndex <= 3) {
+                document.getElementById('education_warning').style.display = "none";
+                //studying
             }
-            else document.getElementById("warning").display = block;
+            else document.getElementById('education_warning').style.display = "block";
         }
     </script>
 </body>
