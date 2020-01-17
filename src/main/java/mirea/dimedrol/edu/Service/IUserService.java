@@ -1,14 +1,14 @@
 package mirea.dimedrol.edu.Service;
 
-import mirea.dimedrol.edu.Model.User;
+import mirea.dimedrol.edu.Model.UserDao;
 
 import java.util.List;
 
 public interface IUserService {
-    User register(User user);
-    List<User> getAll();
-    User findByUsername(String username);
-    User findByEmail(String email);
-    User findById(Long id);
+    UserDao register(UserDao user);
+    List<UserDao> getAll();
+    UserDao findByUsername(String username);
+    UserDao findByEmail(String email);
+    UserDao findById(Long id);
     void delete(Long id);
 }

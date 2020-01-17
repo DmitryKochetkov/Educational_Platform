@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Data
-public class User extends BaseEntity {
+public class UserDao extends BaseEntity {
 
     @Column(name = "username")
     private String username;
@@ -29,10 +29,7 @@ public class User extends BaseEntity {
     private boolean isOnline;
 
     @Column(name = "education")
-    private UserEducations education;
-
-    @Column(name = "studying")
-    private boolean studying;
+    private UserEducation education;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
@@ -41,6 +38,5 @@ public class User extends BaseEntity {
             )
 
     @Column(name = "role")
-    //private UserRoles role;
-    private List<Role> roles;
+    private List<RoleDao> roles;
 }

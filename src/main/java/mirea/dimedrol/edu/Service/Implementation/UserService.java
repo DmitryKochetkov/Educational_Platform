@@ -1,9 +1,9 @@
 package mirea.dimedrol.edu.Service.Implementation;
 
 import lombok.extern.slf4j.Slf4j;
-import mirea.dimedrol.edu.Model.Role;
-import mirea.dimedrol.edu.Model.User;
-import mirea.dimedrol.edu.Model.UserRoles;
+import mirea.dimedrol.edu.Dto.RoleDto;
+import mirea.dimedrol.edu.Model.RoleDao;
+import mirea.dimedrol.edu.Model.UserDao;
 import mirea.dimedrol.edu.Repository.RoleRepository;
 import mirea.dimedrol.edu.Repository.UserRepository;
 import mirea.dimedrol.edu.Service.IUserService;
@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,30 +31,43 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User register(User user) {
-        Role roleUser = roleRepository.findByName("ROLE_USER");
-        List<Role> userRoles = new ArrayList<>();
-        userRoles.add(roleUser);
+    public UserDao register(UserDao user) {
+        List<RoleDao> userRoles = new ArrayList<>();
+//        for (RoleDao role: user.getRoles()) //null
+//        {
+//            RoleDao roleUser = roleRepository.findByName(role.getName());
+//            userRoles.add(roleUser);
+//        }
+        userRoles.add(roleRepository.findByName("USER_ROLE"));
+
+//        List<RoleDao> roles = new ArrayList<>();
+//        for (RoleDto role: this.roles) {
+//            roleRepository.findByName(role.name);
+//        }
+//        result.setRoles(roles);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User registeredUser = userRepository.save(user);
+        user.setRoles(userRoles);
+        user.setCreated(new Date());
+        user.setUpdated(new Date());
 
+        UserDao registeredUser = userRepository.save(user);
         log.info("IN register - user: {} successfully registered", registeredUser);
 
         return registeredUser;
     }
 
     @Override
-    public List<User> getAll() {
-        List<User> result = userRepository.findAll();
+    public List<UserDao> getAll() {
+        List<UserDao> result = userRepository.findAll();
         log.info("IN getAll - {} users found", result.size());
         return result;
     }
 
     @Override
-    public User findByUsername(String username)
+    public UserDao findByUsername(String username)
     {
-        User result = userRepository.findByUsername(username);
+        UserDao result = userRepository.findByUsername(username);
         if (result == null)
             log.info("IN findByUsername - no user {} found", username);
         else log.info("IN findByUsername - user {} successfully found by username {}", result, username);
@@ -61,9 +75,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findByEmail(String email)
+    public UserDao findByEmail(String email)
     {
-        User result = userRepository.findByEmail(email);
+        UserDao result = userRepository.findByEmail(email);
         if (result == null)
             log.info("IN findByEmail - no user {} found by email {}", result, email);
         else log.info("IN findByEmail - user {} successfully found by email {}", result, email);
@@ -71,9 +85,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findById(Long id)
+    public UserDao findById(Long id)
     {
-        User result = userRepository.findById(id).get();
+        UserDao result = userRepository.findById(id).get();
         if (result == null) {
             log.info("IN findById - no user found by id {}", id);
             return null;

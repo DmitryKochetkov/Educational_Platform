@@ -20,12 +20,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                //.antMatchers(HttpMethod.GET, "/", "/signup", "/auth/reg", "/styles/**", "/js/**", "/img/**").anonymous()
-                //.antMatchers(HttpMethod.POST, "/", "/signup", "/auth/reg", "/styles/**", "/js/**", "/img/**")
-                //.anonymous()
+                .antMatchers("/", "/article", "/styles/**", "/js/**", "/img/**")
+                .permitAll()
 
-                .anyRequest()
-                .permitAll();
+                .antMatchers("/signup", "/auth/reg")
+                .anonymous()
+
+                .antMatchers("/cabinet")
+                .authenticated();
+
         http.csrf().disable();
     }
 

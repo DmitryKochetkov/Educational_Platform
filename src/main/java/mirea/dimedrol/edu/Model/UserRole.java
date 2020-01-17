@@ -1,7 +1,7 @@
 package mirea.dimedrol.edu.Model;
 
 
-public enum UserRoles {
+public enum UserRole {
     USER,
     TUTOR,
     ADMIN

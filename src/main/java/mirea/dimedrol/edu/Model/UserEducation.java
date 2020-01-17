@@ -1,6 +1,7 @@
 package mirea.dimedrol.edu.Model;
 
-public enum UserEducations {
+public enum UserEducation {
+    NOT_STATED,
     PRESCHOOLER,
     SCHOOLER,
     STUDENT,
