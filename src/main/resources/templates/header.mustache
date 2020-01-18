@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>neural.net - Free Education </title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Merriweather|Merriweather+Sans|Nunito:700&display=swap" rel="stylesheet">
+</head>
+<body class="unselectable">
+<div class="overlay" id="overlay_reg">
+    <div class="popup">
+        <div class="popup__content">
+            <h1>Вход</h1>
+            <form action="/auth" method="post">
+                <div class="field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="login">
+                </div>
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="passwd">
+                </div>
+                <div>
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Запомнить на этом устройстве</label>
+                </div>
+                <div class="warning">Неверное имя пользователя или пароль!</div>
+                <div>
+                    <button type="submit">Войти</button>
+                </div>
+            </form>
+            <br>
+            Нет аккаунта? <a href="/signup">Регистрация</a>
+        </div>
+        <div class="close-popup">
+            <a title="Close" class="close">&times;</a>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="container">
+        <div class="header__inner">
+            <div id="logo">
+                <img src="../static/img/logo_icon.png" alt="">
+                <a href="">neaural.net</a>
+            </div>
+
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/article">Статьи</a></li>
+                    <li><a href="/forum">Форум</a></li>
+                    <li><a href="/faq">F.A.Q.</a></li>
+                </ul>
+            </nav>
+
+            <div id="login_section">
+                <a id="login_button">Войти</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    var reg = document.getElementById("overlay_reg");
+    var btn = document.getElementById("login_button");
+    var close = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        reg.style.display = "block";
+    };
+
+    close.onclick = function () {
+        reg.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target == reg) {
+            reg.style.display = "none";
+        }
+    }
+</script>

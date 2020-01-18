@@ -39,6 +39,7 @@ public class UserService implements IUserService {
 //            userRoles.add(roleUser);
 //        }
         userRoles.add(roleRepository.findByName("USER_ROLE"));
+        //TODO: configure another roles
 
 //        List<RoleDao> roles = new ArrayList<>();
 //        for (RoleDto role: this.roles) {
@@ -52,7 +53,7 @@ public class UserService implements IUserService {
         user.setUpdated(new Date());
 
         UserDao registeredUser = userRepository.save(user);
-        log.info("IN register - user: {} successfully registered", registeredUser);
+        log.info("IN register - user with email {} successfully registered", registeredUser.getEmail());
 
         return registeredUser;
     }

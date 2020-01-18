@@ -300,7 +300,7 @@ label {
 <!---->
 
 .warning {
-	background: transparent url(/img/warn_icon.gif) no-repeat scroll 14px 13px;
+	background: transparent url(/static/img/warn_icon.gif) no-repeat scroll 14px 13px;
 	padding: 10px 50px;
 	font-size: 14px;
 	font-weight: bold;
