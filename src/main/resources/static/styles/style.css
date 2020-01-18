@@ -316,7 +316,7 @@ label {
 
 <!---->
 
-.article {
+.article, .cabinet {
 	line-height: 1.5;
 }
 
@@ -344,4 +344,23 @@ label {
 
 .article__info>a:hover {
 	color:#CC2244;
+}
+
+/*cabinet*/
+
+.cab__info {
+	display: flex;
+	width: 400px;
+	/*margin: 15px auto;*/
+	padding: 15px;
+	justify-content: space-between;
+}
+
+.cab__info__inner {
+	display: inline-block;
+}
+
+.blue {
+	font-family: nunito;
+	color: #043A6B;
 }
