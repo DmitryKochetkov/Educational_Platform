@@ -1,0 +1,44 @@
+{{> header}}
+
+<section>
+    
+    <div class="container">
+        
+        <h1>Редактирование статьи</h1>
+
+        <form action="/article/publish">
+
+            <div class="field">
+                <label for="header">Заголовок статьи: </label>
+                <input type="text" name="header">
+            </div>
+
+            <div class="field">
+                <label for="hashtag">Хештеги:</label>
+                <input type="text" name="hashtag" id="hashtag">
+            </div>
+
+
+            <div class="hashtags">
+                <div class="hashtag">#java</div>
+                <div class="hashtag">#spring</div>
+                <div class="hashtag">#hibernate</div>
+            </div>
+
+            
+        </form>
+
+
+         
+    </div>
+
+    <script>
+        var hashtag = document.getElementById("hashtag");
+        var hashtag_regExp = /(?:\s|^)#[A-Za-z0-9\-\.\_]+(?:\s|$)/;
+        hashtag.onkeypress = function (event) {
+            var res = hashtag_regExp.exec(hashtag.value);
+
+        }
+    </script>
+    
+</section>

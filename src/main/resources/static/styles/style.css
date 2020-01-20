@@ -364,3 +364,18 @@ label {
 	font-family: nunito;
 	color: #043A6B;
 }
+
+.hashtags {
+	display: inline-flex;
+}
+
+.hashtag {
+	color: #043A6B;
+	background-color: #8edbff;
+	width: auto;
+	padding: 5px 10px;
+	border-radius: 20px/10px;
+	font-family: "Source Code Pro", monospace;
+	cursor: pointer;
+	margin-right: 10px;
+}
