@@ -1,0 +1,28 @@
+{{> header}}
+
+<section>
+    <div class="container">
+        <h1>Управление сервисом: хештеги</h1>
+
+
+        <div class="form__outer">
+            Здесь можно добавить описание к хештегу.
+            <form action="/cabinet/hashtag-managment/edit" method="post">
+                <div class="field">
+                    <label for="hashtag__name">Хештег: </label>
+                    <input type="text" name="hashtag__name">
+                </div>
+
+                <div class="field">
+                    <label for="hashtag__descr">Описание: </label>
+                    <textarea name="hashtag__descr"></textarea>
+                </div>
+
+                <button type="submit">Сохранить изменения</button>
+            </form>
+        </div>
+
+
+
+    </div>
+</section>

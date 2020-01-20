@@ -16,9 +16,4 @@ public class MainController {
     public String signup() {
         return "signup";
     }
-
-    @GetMapping("/cabinet")
-    public String cabinet() {
-        return "cabinet";
-    }
 }

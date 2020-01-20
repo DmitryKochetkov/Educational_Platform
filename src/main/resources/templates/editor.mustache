@@ -1,12 +1,18 @@
 {{> header}}
 
+<script src="https://cdn.tiny.cloud/1/zeh1mk4pppdr1bmwej4qod1hujgmu71142f1salp5swmhzcx/tinymce/5/tinymce.min.js" referrerpolicy="origin"/></script>
+<script>tinymce.init({
+    selector: 'textarea',
+    plugins: 'code'
+});</script>
+
 <section>
     
     <div class="container">
-        
+
         <h1>Редактирование статьи</h1>
 
-        <form action="/article/publish">
+        <form action="/article/publish" method="post">
 
             <div class="field">
                 <label for="header">Заголовок статьи: </label>
@@ -25,7 +31,13 @@
                 <div class="hashtag">#hibernate</div>
             </div>
 
-            
+
+            <div class="field">
+                Содержимое:
+                <textarea></textarea>
+            </div>
+
+            <button type="submit">Сохранить</button>
         </form>
 
 

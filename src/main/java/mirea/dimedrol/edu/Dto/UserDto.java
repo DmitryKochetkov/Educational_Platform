@@ -41,7 +41,7 @@ public class UserDto {
         result.setEmail(email);
         result.setPassword(password);
         result.setUsername(username);
-        //
+        //TODO: delete field roles from this class
         result.setEducation(education);
 
         return result;

@@ -49,6 +49,7 @@ public class UserService implements IUserService {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(userRoles);
+        user.setArticles(new ArrayList<>());
         user.setCreated(new Date());
         user.setUpdated(new Date());
 

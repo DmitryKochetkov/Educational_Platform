@@ -36,7 +36,9 @@ public class UserDao extends BaseEntity {
             joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") },
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
             )
-
     @Column(name = "role")
     private List<RoleDao> roles;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ArticleDao> articles;
 }
