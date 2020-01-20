@@ -1,6 +1,7 @@
 package mirea.dimedrol.edu.Service.Implementation;
 
 import lombok.extern.slf4j.Slf4j;
+import mirea.dimedrol.edu.Dto.HashtagDto;
 import mirea.dimedrol.edu.Model.HashtagDao;
 import mirea.dimedrol.edu.Model.UserDao;
 import mirea.dimedrol.edu.Repository.HashtagRepository;
@@ -29,8 +30,6 @@ public class HashtagService implements IHashtagService {
             HashtagDao createdHashtag = hashtagRepository.save(hashtag);
             log.info("IN createHashtag - hashtag with name {} created", createdHashtag.getName());
             return createdHashtag;
-
-
     }
 
     @Override
@@ -41,5 +40,14 @@ public class HashtagService implements IHashtagService {
         else log.info("IN findByName - hashtag {} successfully found by name {}", result, name);
 
         return result;
+    }
+
+    @Override
+    public HashtagDao editHashtag(HashtagDao hashtag, String description) {
+        hashtag.setDescription(description);
+        hashtag.setUpdated(new Date());
+        hashtagRepository.save(hashtag);
+        log.info("IN editHashtag - hashtag with name {} edited. New description: {}", hashtag.getName(), hashtag.getDescription());
+        return hashtag;
     }
 }

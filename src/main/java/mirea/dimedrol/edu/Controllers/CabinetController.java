@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/cabinet")
@@ -35,10 +36,12 @@ public class CabinetController {
         String name = request.getParameter("hashtag__name");
         String description = request.getParameter("hashtag__descr");
         log.info("IN hastag_edit - request parameters: name = {}, description = {}", name, description);
-        if (hashtagService.findByName(name) == null) {
+        HashtagDao existing = hashtagService.findByName(name);
+        if (existing == null) {
             HashtagDao hashtagDao = new HashtagDto(name, description).toDAO();
             hashtagService.createHashtag(hashtagDao);
         }
+        else hashtagService.editHashtag(existing, description);
 
         return "redirect:";
     }
