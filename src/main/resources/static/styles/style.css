@@ -375,8 +375,17 @@ label {
 	background-color: #8edbff;
 	width: auto;
 	padding: 5px 10px;
-	border-radius: 20px/10px;
+	border-radius: 5px;
 	font-family: "Source Code Pro", monospace;
-	cursor: pointer;
+	/*cursor: pointer;*/
 	margin-right: 10px;
+}
+
+.after__article__info {
+	font-size: 18pt;
+}
+
+.hashtag>.close {
+	font-size: 14px;
+	margin-left: 5px;
 }

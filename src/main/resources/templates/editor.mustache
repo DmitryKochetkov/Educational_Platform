@@ -6,7 +6,6 @@
     plugins: 'code'
 });</script>
 
-
 <section>
     
     <div class="container">
@@ -34,7 +33,7 @@
                 <textarea name="file"></textarea>
             </div>
 
-            <button type="submit">Сохранить</button>
+            <button type="submit" onclick="">Сохранить</button>
         </form>
 
 
@@ -48,14 +47,24 @@
         hashtag.onkeyup = function (event) {
             //TODO: search hashtags
 
+
             if (event.key === " ") {
                 var res = hashtag_regExp.exec(hashtag.value);
+                var area = document.getElementById('hashtags');
+
                 if (res != null)
                 {
+                    var hashtag_array = area.getElementsByClassName('hashtag_text');
+                    if (Array.isArray(hashtag_array) && hashtag_array.length) {
+                        for (let i = 0; i < hashtag_array.length; i++) {
+                            if (hashtag_array[i].textContent.includes(res.toString())) return;
+                        }
+                    }
                     var divElement = document.createElement('div');
                     divElement.className = 'hashtag';
-                    divElement.innerText = res[0];
-                    document.getElementById('hashtags').appendChild(divElement);
+                    // divElement.innerText = res[0];
+                    divElement.innerHTML += '<span class="hashtag_text">' + res[0] + '</span><a class="close" id="delete_hashtag" onclick="this.parentNode.parentNode.removeChild(this.parentNode)">&times;</a>';
+                    area.appendChild(divElement);
                 }
                 hashtag.value = "";
             }
