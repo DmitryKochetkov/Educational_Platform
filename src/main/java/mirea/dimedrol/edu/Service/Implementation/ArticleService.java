@@ -23,7 +23,7 @@ import java.util.List;
 @Slf4j
 public class ArticleService implements IArticleService {
 
-    final String root = "/home/dimedrol/EduAppServer/articles";
+    public final String root = "/home/dimedrol/EduAppServer/articles/";
     ArticleRepository articleRepository;
 
     @Autowired
@@ -39,28 +39,25 @@ public class ArticleService implements IArticleService {
     }
 
     @Override
-    public void saveHTML(String html) {
+    public ArticleDao create(ArticleDao article, String html) {
         try {
             File file = File.createTempFile("article", ".html", new File(root));
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             bw.write(html);
             bw.close();
-            log.info("IN saveHTML - success");
+            article.setContent_path(file.getName());
+            //TODO: set author
+            article.setCreated(new Date());
+            article.setUpdated(new Date());
+            articleRepository.save(article);
+            log.info("IN create - success");
+            return article;
         }
         catch (Exception e)
         {
-            log.info("IN saveHTML - error");
+            log.info("IN create - error");
+            return null;
         }
-    }
-
-    @Override
-    public ArticleDao create(ArticleDao article) {
-
-
-
-        article.setCreated(new Date());
-        article.setUpdated(new Date());
-        return article;
     }
 
     @Override
@@ -75,7 +72,12 @@ public class ArticleService implements IArticleService {
 
     @Override
     public ArticleDao findById(Long id) {
-        return null;
+        ArticleDao result = articleRepository.findById(id).get();
+        if (result == null) {
+            log.info("IN findById - no article found by id {}", id);
+        }
+        else log.info("IN findById - article {} found by id {}", result, id);
+        return result;
     }
 
     @Override

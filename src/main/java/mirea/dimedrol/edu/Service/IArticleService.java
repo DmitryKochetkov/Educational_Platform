@@ -8,12 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface IArticleService {
-    ArticleDao create(ArticleDao article);
+    ArticleDao create(ArticleDao article, String html);
     List<ArticleDao> findByAuthor(UserDao author);
     ArticleDao findById(Long id);
     void delete(Long id);
     List<ArticleDao> getByHashtag(HashtagDao hashtag);
 
     void saveFile(MultipartFile file) throws Exception;
-    void saveHTML(String html);
 }

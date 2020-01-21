@@ -6,6 +6,7 @@
     plugins: 'code'
 });</script>
 
+
 <section>
     
     <div class="container">
@@ -25,11 +26,7 @@
             </div>
 
 
-            <div class="hashtags">
-                <div class="hashtag">#java</div>
-                <div class="hashtag">#spring</div>
-                <div class="hashtag">#hibernate</div>
-            </div>
+            <div class="hashtags" id="hashtags"></div>
 
 
             <div class="field">
@@ -45,12 +42,26 @@
     </div>
 
     <script>
-        var hashtag = document.getElementById("hashtag");
-        var hashtag_regExp = /(?:\s|^)#[A-Za-z0-9\-\.\_]+(?:\s|$)/;
-        hashtag.onkeypress = function (event) {
-            var res = hashtag_regExp.exec(hashtag.value);
+        var hashtag = document.getElementById('hashtag');
 
+        var hashtag_regExp = /(?:\s|^)#[A-Za-z0-9\-\.\_]+(?:\s|$)/;
+        hashtag.onkeyup = function (event) {
+            //TODO: search hashtags
+
+            if (event.key === " ") {
+                var res = hashtag_regExp.exec(hashtag.value);
+                if (res != null)
+                {
+                    var divElement = document.createElement('div');
+                    divElement.className = 'hashtag';
+                    divElement.innerText = res[0];
+                    document.getElementById('hashtags').appendChild(divElement);
+                }
+                hashtag.value = "";
+            }
         }
+
+
     </script>
     
 </section>
