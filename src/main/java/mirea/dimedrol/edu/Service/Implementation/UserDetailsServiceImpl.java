@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDao user = userService.findByUsername(username);
+        UserDao user = userService.findByEmail(username); //TODO: username and email
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
         for (RoleDao roleDao: user.getRoles()) {

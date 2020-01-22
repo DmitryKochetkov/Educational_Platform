@@ -1,6 +1,8 @@
 package mirea.dimedrol.edu.Model;
 
 import lombok.Data;
+import lombok.ToString;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -41,4 +43,9 @@ public class UserDao extends BaseEntity {
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ArticleDao> articles;
+
+    @Override
+    public String toString() {
+        return username;
+    }
 }

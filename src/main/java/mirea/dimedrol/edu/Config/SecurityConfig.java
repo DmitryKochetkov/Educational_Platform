@@ -38,7 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
 
                 .and()
-                .formLogin();
+                .formLogin().loginPage("/login").defaultSuccessUrl("/cabinet");
+//                .formLogin();
 
         http.csrf().disable();
     }

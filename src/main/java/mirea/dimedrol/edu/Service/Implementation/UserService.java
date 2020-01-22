@@ -82,7 +82,7 @@ public class UserService implements IUserService {
     {
         UserDao result = userRepository.findByEmail(email);
         if (result == null)
-            log.info("IN findByEmail - no user {} found by email {}", result, email);
+            log.info("IN findByEmail - no user found by email {}", email);
         else log.info("IN findByEmail - user {} successfully found by email {}", result, email);
         return result;
     }

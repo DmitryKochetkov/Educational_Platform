@@ -21,4 +21,14 @@ public class MainController {
     public String signup() {
         return "signup";
     }
+
+    @RequestMapping("/login")
+    public String login(@RequestParam(name = "error", required = false) String error,
+                        @RequestParam(name = "logout", required = false) String logout,
+                        Model model)
+    {
+        model.addAttribute("error", error != null);
+        model.addAttribute("logout", logout != null);
+        return "login";
+    }
 }
