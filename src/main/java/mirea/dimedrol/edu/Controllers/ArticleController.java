@@ -24,18 +24,13 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
-//    @GetMapping
-//    public String article() {
-//        return "article";
-//    }
-
     @GetMapping
     public String article(Model model, @RequestParam(value="id", required = true) Long id) {
         ArticleDao article = articleService.findById(id);
         model.addAttribute("page", articleService.root + article.getContent_path());
         return "article";
 
-    } //TODO: required = true
+    }
 
     @GetMapping("/edit")
     public String edit() { return "editor"; }
@@ -48,6 +43,6 @@ public class ArticleController {
         articleDao.setHeader(header);
         articleService.create(articleDao, html);
 
-        return "redirect:";
+        return "/article";
     }
 }

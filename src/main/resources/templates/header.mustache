@@ -13,36 +13,6 @@
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Merriweather|Merriweather+Sans|Nunito:700&display=swap" rel="stylesheet">
 </head>
 <body class="unselectable">
-<div class="overlay" id="overlay_reg">
-    <div class="popup">
-        <div class="popup__content">
-            <h1>Вход</h1>
-            <form action="/auth" method="post">
-                <div class="field">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="login">
-                </div>
-                <div class="field">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="passwd">
-                </div>
-                <div>
-                    <input type="checkbox" id="remember">
-                    <label for="remember">Запомнить на этом устройстве</label>
-                </div>
-                <div class="warning">Неверное имя пользователя или пароль!</div>
-                <div>
-                    <button type="submit">Войти</button>
-                </div>
-            </form>
-            <br>
-            Нет аккаунта? <a href="/signup">Регистрация</a>
-        </div>
-        <div class="close-popup">
-            <a title="Close" class="close">&times;</a>
-        </div>
-    </div>
-</div>
 
 <header>
     <div class="container">

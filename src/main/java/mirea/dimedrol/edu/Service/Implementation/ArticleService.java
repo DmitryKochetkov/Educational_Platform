@@ -1,6 +1,7 @@
 package mirea.dimedrol.edu.Service.Implementation;
 
 import lombok.extern.slf4j.Slf4j;
+import mirea.dimedrol.edu.Config.SecurityConfig;
 import mirea.dimedrol.edu.Model.ArticleDao;
 import mirea.dimedrol.edu.Model.HashtagDao;
 import mirea.dimedrol.edu.Model.UserDao;
@@ -23,7 +24,7 @@ import java.util.List;
 @Slf4j
 public class ArticleService implements IArticleService {
 
-    public final String root = "/home/dimedrol/EduAppServer/articles/";
+    public final String root = SecurityConfig.root;
     ArticleRepository articleRepository;
 
     @Autowired

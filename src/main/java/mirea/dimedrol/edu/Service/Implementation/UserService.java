@@ -39,6 +39,7 @@ public class UserService implements IUserService {
 //            userRoles.add(roleUser);
 //        }
         userRoles.add(roleRepository.findByName("USER_ROLE"));
+        //TODO: if (education >= phd) add role author
         //TODO: configure another roles
 
 //        List<RoleDao> roles = new ArrayList<>();

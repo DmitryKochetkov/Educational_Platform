@@ -5,11 +5,14 @@ import mirea.dimedrol.edu.Dto.UserDto;
 import mirea.dimedrol.edu.Model.UserDao;
 import mirea.dimedrol.edu.Model.UserEducation;
 import mirea.dimedrol.edu.Repository.RoleRepository;
+import mirea.dimedrol.edu.Service.Implementation.SecurityService;
 import mirea.dimedrol.edu.Service.Implementation.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -18,16 +21,21 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/auth")
-public class LoginController {
+public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    RoleRepository roleRepository;
+    private SecurityService securityService;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @PostMapping
-    public String auth(HttpServletRequest request, Map<String, Object> model) {
+    public String login(HttpServletRequest request,
+                        Model model)
+    {
         String login = request.getParameter("login");
         String password = request.getParameter("passwd");
         System.out.println(login + " " + password);
@@ -38,8 +46,8 @@ public class LoginController {
             return "redirect:";
         }
 
+        model.addAttribute("login", login);
         return "/cabinet";
-
     }
 
     @PostMapping("/reg")

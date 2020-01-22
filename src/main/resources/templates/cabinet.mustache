@@ -9,10 +9,12 @@
                     <img src="./img/default-user-image.png" alt="" id="avatar" width="150px">
                     <div class="cab__info__inner">
                         <ul>
-                            <li>Пользователь:</li>
+                            <li>Пользователь: </li>
                             <li>Электронная почта:</li>
                             <li><a href="/error" class="blue">Запросить смену пароля</a></li>
-                            <li><a href="/error" class="blue">Выйти</a></li>
+                            <form id="logoutForm" method="post" action="/logout">
+                                <input type="hidden" name="logout">Выйти</input>
+                            </form>
                         </ul>
                     </div>
 
