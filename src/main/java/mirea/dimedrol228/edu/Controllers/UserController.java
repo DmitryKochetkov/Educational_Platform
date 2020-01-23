@@ -40,6 +40,9 @@ public class UserController {
                 return "/error";
             model.addAttribute("viewed", viewed);
         }
+        else if (id == null)
+            return "redirect:/user?id=" + userService.findByUsername(principal.getUsername()).getId();
+
         return "user";
     }
 

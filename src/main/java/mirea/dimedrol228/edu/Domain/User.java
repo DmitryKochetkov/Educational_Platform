@@ -49,7 +49,7 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public Long getId() {
         return super.getId();
-    }
+    } //TODO: fix - it returns null
 
     public List<String> getAuthoritiesStrings() {
         List<String> res = new ArrayList<>();
