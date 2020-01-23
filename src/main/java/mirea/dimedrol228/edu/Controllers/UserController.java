@@ -34,6 +34,7 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
         model.addAttribute("principal", principal);
+        model.addAttribute("viewed", principal);
         if (id != null && id != principal.getId()) {
             User viewed = userService.findById(id);
             if (viewed == null)
