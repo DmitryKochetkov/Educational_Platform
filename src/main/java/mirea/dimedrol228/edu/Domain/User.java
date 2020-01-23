@@ -35,7 +35,7 @@ public class User extends BaseEntity implements UserDetails {
     boolean isEnabled;
 
     @Column(name = "isOnline")
-    boolean isOnline; //TODO: change when login/logout
+    boolean isOnline = false; //TODO: change when login/logout
 
     String email;
     String education;

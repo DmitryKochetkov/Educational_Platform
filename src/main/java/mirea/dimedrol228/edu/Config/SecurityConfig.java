@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").anonymous()
 
                 .and()
-                .formLogin()
+                .formLogin().defaultSuccessUrl("/user")
 
                 .and()
                 .logout()

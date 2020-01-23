@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<#include "header.ftlh">
 <section>
     <div class="container">
         <div class="cabinet">
@@ -17,7 +18,7 @@
                 <img src="./img/default-user-image.png" alt="" id="avatar" width="150px">
                 <div class="cab__info__inner">
                     <ul>
-                        <li>Пользователь: ${current_user}</li>
+                        <li>Пользователь: </li>
                         <li>Электронная почта:</li>
                         <li><a href="/error" class="blue">Запросить смену пароля</a></li>
                         <li><a href="/logout">Выйти</a></li>
