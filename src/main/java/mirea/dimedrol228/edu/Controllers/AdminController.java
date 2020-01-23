@@ -11,7 +11,7 @@ public class AdminController {
     @GetMapping
     public String admin() {
         return "admin";
-    }
+    } //TODO: header
 
     @GetMapping("/manage-hashtags")
     public String manage_hashtags() {

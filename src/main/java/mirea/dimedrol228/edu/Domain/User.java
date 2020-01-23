@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class User extends BaseEntity implements UserDetails {
             joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") },
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
-    @Column(name = "roles")
+//    @Column(name = "roles")
     List<Role> authorities;
 
     String password;
@@ -48,6 +49,12 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public Long getId() {
         return super.getId();
+    }
+
+    public List<String> getAuthoritiesStrings() {
+        List<String> res = new ArrayList<>();
+        for (Role role: authorities) {res.add(role.toString());}
+        return res;
     }
 
     //TODO: articles

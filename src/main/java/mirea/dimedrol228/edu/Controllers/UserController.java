@@ -22,7 +22,7 @@ public class UserController {
     public String user(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User)authentication.getPrincipal();
-        model.addAttribute("principal", principal); //TODO: fix bug
+        model.addAttribute("principal", principal);
         return "user";
     }
 }

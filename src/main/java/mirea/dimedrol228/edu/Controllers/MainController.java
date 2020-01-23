@@ -29,10 +29,10 @@ public class MainController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         try {
             User principal = (User) authentication.getPrincipal();
-            model.addAttribute("principal", principal); //TODO: fix bug
+            model.addAttribute("principal", principal);
         }
         catch (ClassCastException e) {
-            model.addAttribute("principal", ""); //TODO: fix bug
+            model.addAttribute("principal", "");
         }
         return "index";
     }

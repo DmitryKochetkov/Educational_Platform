@@ -10,6 +10,7 @@
 </head>
 <body>
 <#include "header.ftlh">
+
 <section>
     <div class="container">
         <div class="cabinet">
@@ -33,11 +34,16 @@
                     <li><a href="/user/articles" class="blue">Мои статьи</a></li>
                     <li><a href="/user/star" class="blue">Избранное</a></li>
                     <li><a href="/user/lessons" class="blue">Мои уроки</a></li>
+                    <#if principal.getAuthoritiesStrings()?seq_contains("ROLE_ADMIN")>
+                        <li><a href="/admin">Панель администратора</a></li>
+                    </#if>
                 </ul>
+
             </div>
 
+            Аналитика:
             <div class="cab__info">
-                Аналитика:
+
                 <ul>
                     <li>Подписчиков:</li>
                     <li>Статей:</li>
