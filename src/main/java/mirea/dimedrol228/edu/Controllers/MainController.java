@@ -1,17 +1,17 @@
 package mirea.dimedrol228.edu.Controllers;
 
 import mirea.dimedrol228.edu.Domain.Role;
+
 import mirea.dimedrol228.edu.Domain.User;
 import mirea.dimedrol228.edu.Domain.UserEducation;
 import mirea.dimedrol228.edu.Repositories.RoleRepository;
 import mirea.dimedrol228.edu.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +24,11 @@ public class MainController {
     @Autowired
     RoleRepository roleRepository;
 
-    @GetMapping("/")
-    public String index() {
+    @RequestMapping("/")
+    public String index(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        model.addAttribute("principal", principal); //TODO: fix bug
         return "index";
     }
 

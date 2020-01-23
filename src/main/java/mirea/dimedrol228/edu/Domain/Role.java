@@ -14,11 +14,16 @@ public class Role extends BaseEntity implements GrantedAuthority {
 
     String authority;
 
-    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "authorities", fetch = FetchType.EAGER)
     List<User> users;
 
     @Override
     public String getAuthority() {
+        return authority;
+    }
+
+    @Override
+    public String toString() {
         return authority;
     }
 }

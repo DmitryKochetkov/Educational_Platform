@@ -16,8 +16,14 @@
             </nav>
 
             <div id="login_section">
-                <a id="login_button" href="/login">Войти</a>
+                <#if true>
+                    <i class="fas fa-user"></i>
+                    <a href="/user">${principal}</a>
+                <#else>
+                    <a id="login_button" href="/login">Войти</a>
+                </#if>
             </div>
+
         </div>
     </div>
 </header>

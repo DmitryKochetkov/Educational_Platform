@@ -68,11 +68,8 @@ public class UserService implements UserDetailsService {
     }
 
     public User register(User user) {
-        List<Role> userRoles = new ArrayList<>();
-        //TODO: if (education >= phd) add role author
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        //user.setArticles(new ArrayList<>());
+        //TODO: user.setArticles(new ArrayList<>());
         user.setCreated(new Date());
         user.setUpdated(new Date());
 
@@ -87,7 +84,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username); //TODO: username and email
         if (user != null)
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.getAuthorities());
+        return user;
         else {
             String msg = "User " + username + " is not registered!";
             throw new UsernameNotFoundException(msg);

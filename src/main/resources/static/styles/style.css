@@ -356,14 +356,13 @@ label {
 
 .cab__info {
 	display: flex;
-	width: 400px;
-	/*margin: 15px auto;*/
 	padding: 15px;
-	justify-content: space-between;
+	justify-content: left;
 }
 
 .cab__info__inner {
 	display: inline-block;
+	padding-left: 15px;
 }
 
 .blue {

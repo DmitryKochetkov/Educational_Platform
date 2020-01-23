@@ -19,8 +19,8 @@
                 <img src="./img/default-user-image.png" alt="" id="avatar" width="150px">
                 <div class="cab__info__inner">
                     <ul>
-                        <li>Пользователь: </li>
-                        <li>Электронная почта:</li>
+                        <li>Пользователь: ${principal.getUsername()}</li>
+                        <li>Электронная почта: ${principal.getEmail()}</li>
                         <li><a href="/error" class="blue">Запросить смену пароля</a></li>
                         <li><a href="/logout">Выйти</a></li>
                     </ul>
@@ -30,9 +30,9 @@
 
             <div class="cab__info">
                 <ul>
-                    <li><a href="/cabinet/articles" class="blue">Мои статьи</a></li>
-                    <li><a href="/cabinet/star" class="blue">Избранное</a></li>
-                    <li><a href="/cabinet/lessons" class="blue">Мои уроки</a></li>
+                    <li><a href="/user/articles" class="blue">Мои статьи</a></li>
+                    <li><a href="/user/star" class="blue">Избранное</a></li>
+                    <li><a href="/user/lessons" class="blue">Мои уроки</a></li>
                 </ul>
             </div>
 
