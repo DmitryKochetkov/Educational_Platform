@@ -1,5 +1,6 @@
 package mirea.dimedrol228.edu.Controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import mirea.dimedrol228.edu.Domain.User;
 import mirea.dimedrol228.edu.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@Slf4j
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
 
+//    @RequestMapping
+//    public String user(Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        User principal = (User)authentication.getPrincipal();
+//        model.addAttribute("principal", principal);
+//        return "user";
+//    }
+
     @RequestMapping
-    public String user(Model model) {
+    public String user(Model model,
+                       @RequestParam(required = false) Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User principal = (User)authentication.getPrincipal();
+        User principal = (User) authentication.getPrincipal();
+        if (id != null && id != principal.getId()) {
+            principal = userService.findById(id);
+
+        }
         model.addAttribute("principal", principal);
         return "user";
     }
