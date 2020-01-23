@@ -9,6 +9,31 @@
     <#include "style.ftlh">
 </head>
 <body>
-    Manage hashtags here
+    <#include "header.ftlh">
+    <section>
+        <div class="container">
+            <h1>Управление сервисом: хештеги</h1>
+
+            <div class="form__outer">
+                Здесь можно добавить описание к хештегу.
+                <form action="/admin/manage-hashtags/edit" method="post">
+                    <div class="field">
+                        <label for="hashtag_name">Хештег: </label>
+                        <input type="text" name="hashtag_name">
+                    </div>
+
+                    <div class="field">
+                        <label for="hashtag__descr">Описание: </label>
+                        <textarea name="hashtag_descr"></textarea>
+                    </div>
+
+                    <button type="submit">Сохранить изменения</button>
+                </form>
+            </div>
+
+            <!--        TODO: script for searching hashtag-->
+
+        </div>
+    </section>
 </body>
 </html>

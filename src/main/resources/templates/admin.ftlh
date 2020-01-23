@@ -10,7 +10,13 @@
 </head>
 <body>
     <#include "header.ftlh">
-    Admin page
-    <a href="/manage-hashtags">Edit hashtags</a>
+    <div class="container">
+        <h1>Администратор</h1>
+        <ul>
+            <li><a href="/admin/manage-hashtags">Управление хештегами</a></li>
+            <li><a href="/admin/manage-users">Управление пользователями</a></li>
+        </ul>
+    </div>
+
 </body>
 </html>

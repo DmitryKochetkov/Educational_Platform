@@ -25,6 +25,11 @@ a {
 	cursor: pointer;
 }
 
+li>a {
+	font-family: nunito;
+	color: #043A6B;
+}
+
 input {
 	border-radius: 3px;
 	font-family: 'Merriweather', serif;
