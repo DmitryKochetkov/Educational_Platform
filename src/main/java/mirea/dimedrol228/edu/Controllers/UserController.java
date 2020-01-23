@@ -20,14 +20,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-//    @RequestMapping
-//    public String user(Model model) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        User principal = (User)authentication.getPrincipal();
-//        model.addAttribute("principal", principal);
-//        return "user";
-//    }
-
     @RequestMapping
     public String user(Model model,
                        @RequestParam(required = false) Long id) {
@@ -47,8 +39,20 @@ public class UserController {
         return "user";
     }
 
+    @RequestMapping("/delete-account")
+    public String delete_account() {
+        userService.delete(userService.findByUsername(userService.findLoggedIn().getUsername()).getId());
+        return "redirect:/logout";
+    }
+
     @RequestMapping("/articles")
-    public String my_articles() {
+    public String my_articles(Model model) {
+        model.addAttribute("principal", userService.findLoggedIn());
         return "my-articles";
+    }
+
+    @RequestMapping("/articles/edit")
+    public String my_articles_edit() {
+        return "editor";
     }
 }

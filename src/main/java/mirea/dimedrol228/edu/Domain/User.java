@@ -38,6 +38,9 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "isOnline")
     boolean isOnline = false; //TODO: change when login/logout
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Article> articles;
+
     String email;
     String education;
 
@@ -57,6 +60,5 @@ public class User extends BaseEntity implements UserDetails {
         return res;
     }
 
-    //TODO: articles
     //TODO: subscribers
 }

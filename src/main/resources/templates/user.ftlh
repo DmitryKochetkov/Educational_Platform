@@ -49,6 +49,7 @@
                     <#if principal.getAuthoritiesStrings()?seq_contains("ROLE_ADMIN")>
                         <li><a href="/admin">Панель администратора</a></li>
                     </#if>
+                    <li><a href="/user/delete-account">Удалить аккаунт</a></li>
                 </ul>
             </div>
             </#if>
@@ -58,7 +59,7 @@
 
                 <ul>
                     <li>Подписчиков:</li>
-                    <li>Статей:</li>
+                    <li>Статей: ${viewed.getArticles()?size}</li>
                     <li>Учеников:</li>
                     <li>Проведено уроков на портале:</li>
                 </ul>
