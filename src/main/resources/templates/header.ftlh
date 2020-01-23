@@ -16,9 +16,9 @@
             </nav>
 
             <div id="login_section">
-                <#if true>
+                <#if principal?has_content>
                     <i class="fas fa-user"></i>
-                    <a href="/user">${principal}</a>
+                    <a href="/user">${principal.getUsername()}</a>
                 <#else>
                     <a id="login_button" href="/login">Войти</a>
                 </#if>

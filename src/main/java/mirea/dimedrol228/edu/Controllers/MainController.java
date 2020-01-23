@@ -24,11 +24,16 @@ public class MainController {
     @Autowired
     RoleRepository roleRepository;
 
-    @RequestMapping("/")
-    public String index(Model model) {
+    @RequestMapping
+    public String user(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        model.addAttribute("principal", principal); //TODO: fix bug
+        try {
+            User principal = (User) authentication.getPrincipal();
+            model.addAttribute("principal", principal); //TODO: fix bug
+        }
+        catch (ClassCastException e) {
+            model.addAttribute("principal", ""); //TODO: fix bug
+        }
         return "index";
     }
 

@@ -40,6 +40,16 @@ public class User extends BaseEntity implements UserDetails {
     String email;
     String education;
 
+    @Override
+    public String toString() {
+        return "id" + this.getId();
+    }
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
     //TODO: articles
     //TODO: subscribers
 }
