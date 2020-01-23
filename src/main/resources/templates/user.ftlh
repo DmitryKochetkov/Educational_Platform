@@ -14,21 +14,33 @@
 <section>
     <div class="container">
         <div class="cabinet">
-            <h1>Личный кабинет</h1>
+            <#if viewed?? && viewed.getUsername() == principal.getUsername()>
+                <h1>Личный кабинет</h1>
+                <#else><h1>Пользователь</h1>
+            </#if>
+
 
             <div class="cab__info">
                 <img src="./img/default-user-image.png" alt="" id="avatar" width="150px">
                 <div class="cab__info__inner">
                     <ul>
-                        <li>Пользователь: ${principal.getUsername()}</li>
-                        <li>Электронная почта: ${principal.getEmail()}</li>
-                        <li><a href="/error" class="blue">Запросить смену пароля</a></li>
-                        <li><a href="/logout">Выйти</a></li>
+                        <#if viewed?? && viewed.getUsername() == principal.getUsername()>
+                                <li>Пользователь: ${principal.getUsername()}</li>
+                                <li>Электронная почта: ${viewed.getEmail()}</li>
+                            <#else>
+                                <li>Пользователь: ${viewed.getUsername()}</li>
+                                <li>Электронная почта: ${viewed.getEmail()}</li>
+                        </#if>
+                        <#if viewed?? && viewed.getUsername() == principal.getUsername()>
+                            <li><a href="/error" class="blue">Запросить смену пароля</a></li>
+                            <li><a href="/logout">Выйти</a></li>
+                        </#if>
                     </ul>
                 </div>
 
             </div>
 
+            <#if viewed?? && viewed.getUsername() == principal.getUsername()>
             <div class="cab__info">
                 <ul>
                     <li><a href="/user/articles" class="blue">Мои статьи</a></li>
@@ -38,8 +50,8 @@
                         <li><a href="/admin">Панель администратора</a></li>
                     </#if>
                 </ul>
-
             </div>
+            </#if>
 
             Аналитика:
             <div class="cab__info">

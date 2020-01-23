@@ -33,11 +33,13 @@ public class UserController {
                        @RequestParam(required = false) Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
-        if (id != null && id != principal.getId()) {
-            principal = userService.findById(id);
-
-        }
         model.addAttribute("principal", principal);
+        if (id != null && id != principal.getId()) {
+            User viewed = userService.findById(id);
+            if (viewed == null)
+                return "/error";
+            model.addAttribute("viewed", viewed);
+        }
         return "user";
     }
 

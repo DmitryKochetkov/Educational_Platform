@@ -42,8 +42,6 @@ public class MainController {
         return "signup";
     }
 
-
-
     @PostMapping("/signup/register")
     public String register(@RequestParam String email,
                            @RequestParam String username,
