@@ -25,6 +25,10 @@ a {
 	cursor: pointer;
 }
 
+textarea {
+	font-size: 14pt;
+}
+
 li>a {
 	font-family: nunito;
 	color: #043A6B;

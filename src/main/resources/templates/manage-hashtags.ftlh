@@ -23,8 +23,8 @@
                     </div>
 
                     <div class="field">
-                        <label for="hashtag__descr">Описание: </label>
-                        <textarea name="hashtag_descr"></textarea>
+                        <label for="hashtag_description">Описание: </label>
+                        <textarea name="hashtag_description" id="hashtag_description"></textarea>
                     </div>
 
                     <button type="submit">Сохранить изменения</button>

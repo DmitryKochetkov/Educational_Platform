@@ -22,4 +22,9 @@ public class BaseEntity {
     @LastModifiedDate
     @Column(name = "updated")
     private Date updated;
+
+    public BaseEntity() {
+        created = new Date();
+        updated = new Date();
+    }
 }

@@ -25,4 +25,9 @@ public class UserController {
         model.addAttribute("principal", principal);
         return "user";
     }
+
+    @RequestMapping("/articles")
+    public String my_articles() {
+        return "my-articles";
+    }
 }
