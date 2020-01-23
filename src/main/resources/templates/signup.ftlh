@@ -8,6 +8,7 @@
     <title>Signup</title>
 </head>
 <body>
+    <#include "header.ftlh">
     <section>
         <div class="container">
             <h1>Регистрация</h1>

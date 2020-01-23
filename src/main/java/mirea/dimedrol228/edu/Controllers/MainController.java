@@ -36,7 +36,7 @@ public class MainController {
 
     @GetMapping("/user")
     public String user(Model model) {
-        model.addAttribute("usr", userService.findLoggedInUsername());
+        model.addAttribute("current_user", userService.findLoggedInUsername()); //TODO: fix bug
         return "user";
     }
 

@@ -34,6 +34,9 @@ public class User extends BaseEntity implements UserDetails {
     boolean isCredentialsNonExpired;
     boolean isEnabled;
 
+    @Column(name = "isOnline")
+    boolean isOnline; //TODO: change when login/logout
+
     String email;
     String education;
 
