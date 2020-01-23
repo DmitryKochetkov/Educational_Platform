@@ -34,11 +34,7 @@ public class MainController {
         return "signup";
     }
 
-    @GetMapping("/user")
-    public String user(Model model) {
-        model.addAttribute("current_user", userService.findLoggedInUsername()); //TODO: fix bug
-        return "user";
-    }
+
 
     @PostMapping("/signup/register")
     public String register(@RequestParam String email,
@@ -62,6 +58,10 @@ public class MainController {
         user.setEmail(email);
         user.setPassword(password);
         user.setUsername(username);
+        user.setEnabled(true);
+        user.setAccountNonLocked(true);
+        user.setAccountNonExpired(true);
+        user.setCredentialsNonExpired(true);
         List<Role> roles = new ArrayList<>();
         switch (role) {
             case "author":
