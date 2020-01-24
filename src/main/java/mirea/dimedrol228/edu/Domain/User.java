@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class User extends BaseEntity implements UserDetails {
             joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") },
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
-//    @Column(name = "roles")
+    @Column(name = "roles")
     List<Role> authorities;
 
     String password;
@@ -39,6 +40,7 @@ public class User extends BaseEntity implements UserDetails {
     boolean isOnline = false; //TODO: change when login/logout
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @Column(name = "articles")
     private List<Article> articles;
 
     String email;
@@ -46,7 +48,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public String toString() {
-        return "id" + this.getId();
+        return "id" + getId();
     }
 
     @Override

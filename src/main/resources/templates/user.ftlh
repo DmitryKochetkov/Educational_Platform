@@ -59,9 +59,10 @@
 
                 <ul>
                     <li>Подписчиков:</li>
+<#--                    <li>Статей: ${viewed.getArticles()?size}</li>-->
                     <li>Статей: ${viewed.getArticles()?size}</li>
-                    <li>Учеников:</li>
-                    <li>Проведено уроков на портале:</li>
+                    <li>Учеников: </li>
+                    <li>Проведено уроков на портале: </li>
                 </ul>
             </div>
 

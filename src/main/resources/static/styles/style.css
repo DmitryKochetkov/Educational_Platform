@@ -263,7 +263,7 @@ label {
 	font-family: Merriweather, serif;
 }
 
-#join {
+#join, .a_button {
 	padding-left: 50px;
 	background: #5EB246;
 	font-family: nunito;
@@ -396,4 +396,10 @@ label {
 .hashtag>.close {
 	font-size: 14px;
 	margin-left: 5px;
+}
+
+.article__list {
+	font-family: 'Merriweather', serif;
+	font-size: 16px;
+	line-height: 1.5;
 }

@@ -27,4 +27,8 @@ public class BaseEntity {
         created = new Date();
         updated = new Date();
     }
+
+    public Long getId() {
+        return id;
+    }
 }

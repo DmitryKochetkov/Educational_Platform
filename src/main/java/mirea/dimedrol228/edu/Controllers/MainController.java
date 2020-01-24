@@ -87,6 +87,6 @@ public class MainController {
 
         userService.register(user);
 
-        return "index";
+        return "redirect:/";
     }
 }

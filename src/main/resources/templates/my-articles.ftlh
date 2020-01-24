@@ -15,12 +15,14 @@
     <div class="container">
         <h1>Мои статьи</h1>
 
-        <ul>
-        <#list principal.getArticles() as articles>
-            <li><a href="">${articles.getHeader()}</a></li>
-        </#list>
+        <ul class="article__list">
+            <#list principal.getArticles() as article>
+            <li><a href="/user/articles?id=${article.getId()}">${article.getHeader()}</a> (обновлена ${article.getUpdated()})</li>
+            </#list>
+
         </ul>
-        <a href="/user/articles/edit">Создать статью</a>
+        <br>
+        <a class="a_button" href="/user/articles/edit">Создать статью</a>
     </div>
 </section>
 
