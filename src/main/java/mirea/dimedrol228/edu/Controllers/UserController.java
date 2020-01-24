@@ -57,7 +57,7 @@ public class UserController {
 
     @RequestMapping("/articles")
     public String my_articles(Model model,
-                              @RequestParam(required = false) Long article_id) {
+                              @RequestParam(required = false, name="id") Long article_id) {
         model.addAttribute("principal", userService.findByUsername(userService.findLoggedIn().getUsername()));
         if (article_id == null)
         return "my-articles";

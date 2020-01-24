@@ -10,7 +10,36 @@
 </head>
 <body>
     <#include "header.ftlh">
-    <h1>Статья</h1>
-    <#include "${root}${article.getContent_path()}">
+    <div class="container">
+        <div class="article">
+            <h1>${article.getHeader()}</h1>
+            <p class="article__info">Опубликовал <a href="/user?id=${article.getAuthor().getId()}">${article.getAuthor().getUsername()}</a> ${article.getCreatedFormatted()}</p>
+
+<#--            <iframe src="/repos/articles/${article.getContent_path()}" height="100%" width="100%"></iframe>-->
+            <div id="content">
+
+            </div>
+
+
+            <div class="after__article__info">
+                <i class="fas fa-eye"></i> 0
+                <i class="far fa-heart"></i> 0
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Комментарии</h1>
+    </div>
+
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/repos/articles/${article.getContent_path()}');
+        xhr.send();
+        xhr.onload = function () {
+            document.getElementById('content').innerHTML = xhr.response;
+        }
+    </script>
+
 </body>
 </html>

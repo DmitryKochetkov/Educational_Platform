@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
-    public static final String root = "/home/dimedrol/EduAppServer/articles/";
+    public static final String root = "/home/dimedrol/EduAppServer/";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/styles/**", "/img/**", "/js/**", "/error").permitAll()
                 .antMatchers("/signup/**", "/signup/register").permitAll()
 
-                .antMatchers("/user/**", "/logout").authenticated()
+                .antMatchers("/user/**", "/logout", "/repos/articles").authenticated()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/admin/**").hasRole("ADMIN")
 

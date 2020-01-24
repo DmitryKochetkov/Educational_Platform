@@ -3,7 +3,10 @@ package mirea.dimedrol228.edu.Domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "articles")
@@ -26,4 +29,12 @@ public class Article extends BaseEntity {
     )
 //    @Column(name = "hashtags")
     private List<Hashtag> hashtags;
+
+    public String getCreatedFormatted() {
+        Locale locale = new Locale("ru", "RU");
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, locale);
+        String date = dateFormat.format(getCreated());
+
+        return date;
+    }
 }

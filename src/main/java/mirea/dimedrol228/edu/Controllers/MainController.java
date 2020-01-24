@@ -1,5 +1,6 @@
 package mirea.dimedrol228.edu.Controllers;
 
+import mirea.dimedrol228.edu.Config.SecurityConfig;
 import mirea.dimedrol228.edu.Domain.Role;
 
 import mirea.dimedrol228.edu.Domain.User;
@@ -7,12 +8,19 @@ import mirea.dimedrol228.edu.Domain.UserEducation;
 import mirea.dimedrol228.edu.Repositories.RoleRepository;
 import mirea.dimedrol228.edu.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +38,7 @@ public class MainController {
         try {
             User principal = (User) authentication.getPrincipal();
             model.addAttribute("principal", principal);
-        }
-        catch (ClassCastException e) {
+        } catch (ClassCastException e) {
             model.addAttribute("principal", "");
         }
         return "index";
@@ -88,5 +95,30 @@ public class MainController {
         userService.register(user);
 
         return "redirect:/";
+    }//If user is not authorized - he should be thrown out from here itself
+
+    //Authorized user will download the file
+
+    @GetMapping("/repos/articles/{fileName:.+}")
+    public void downloadWebResource(@PathVariable("fileName") String fileName,
+                                      HttpServletResponse response) throws IOException {
+        String dataDirectory = SecurityConfig.root + "articles/";
+        Path file = Paths.get(dataDirectory, fileName);
+        if (Files.exists(file))
+        {
+            response.setContentType("text/html");
+//            response.addHeader("Content-Disposition", "attachment; filename="+fileName);
+//            return Files.readString(file);
+            try
+            {
+
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
+
 }

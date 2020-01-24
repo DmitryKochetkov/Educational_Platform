@@ -22,7 +22,7 @@
 
         </ul>
         <br>
-        <a class="a_button" href="/user/articles/edit">Создать статью</a>
+        <a href="/user/articles/edit">Создать статью</a>
     </div>
 </section>
 
