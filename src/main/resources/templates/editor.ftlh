@@ -7,10 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>neural.net - Editor</title>
     <#include "style.ftlh">
-    <script src="https://cdn.tiny.cloud/1/zeh1mk4pppdr1bmwej4qod1hujgmu71142f1salp5swmhzcx/tinymce/5/tinymce.min.js" referrerpolicy="origin"/>
+    <script src="https://cdn.tiny.cloud/1/zeh1mk4pppdr1bmwej4qod1hujgmu71142f1salp5swmhzcx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({
         selector: 'textarea',
-        plugins: 'code'
+        plugins: "codesample",
+        codesample_languages: [
+            {text: 'HTML/XML', value: 'markup'},
+            {text: 'JavaScript', value: 'javascript'},
+            {text: 'CSS', value: 'css'},
+            {text: 'PHP', value: 'php'},
+            {text: 'Ruby', value: 'ruby'},
+            {text: 'Python', value: 'python'},
+            {text: 'Java', value: 'java'},
+            {text: 'C', value: 'c'},
+            {text: 'C#', value: 'csharp'},
+            {text: 'C++', value: 'cpp'}
+        ],
+        toolbar: "codesample",
+
     });</script>
 </head>
 <body>

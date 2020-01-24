@@ -7,19 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>neural.net</title>
     <#include "style.ftlh">
+
 </head>
 <body>
     <#include "header.ftlh">
+
+    <section>
+
+
+    </section>
+
     <div class="container">
         <div class="article">
             <h1>${article.getHeader()}</h1>
             <p class="article__info">Опубликовал <a href="/user?id=${article.getAuthor().getId()}">${article.getAuthor().getUsername()}</a> ${article.getCreatedFormatted()}</p>
 
-<#--            <iframe src="/repos/articles/${article.getContent_path()}" height="100%" width="100%"></iframe>-->
             <div id="content">
 
             </div>
 
+            <pre class="language-java" class="line-numbers">
+                <code class="language-java" class="line-numbers">String s1 = new String();</code>
+            </pre>
 
             <div class="after__article__info">
                 <i class="fas fa-eye"></i> 0
@@ -41,5 +50,6 @@
         }
     </script>
 
+    <script src="/js/prism.js"></script>
 </body>
 </html>

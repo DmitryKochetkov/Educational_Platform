@@ -34,7 +34,7 @@ public class ArticleService {
 
     public Article create(Article article, String html) {
         try {
-            File file = File.createTempFile("article", ".html", new File(root));
+            File file = File.createTempFile("article", ".html", new File(root + "articles"));
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             bw.write(html);
             bw.close();

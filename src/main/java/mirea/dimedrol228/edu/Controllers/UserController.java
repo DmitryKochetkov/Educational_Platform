@@ -83,6 +83,6 @@ public class UserController {
         article.setHeader(header);
         article.setHashtags(new ArrayList<>()); //TODO: hashtags json
         articleService.create(article, html);
-        return "/user/articles";
+        return "redirect:/user/articles";
     }
 }
