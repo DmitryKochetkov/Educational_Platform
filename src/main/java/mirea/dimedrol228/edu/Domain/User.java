@@ -43,6 +43,20 @@ public class User extends BaseEntity implements UserDetails {
 //    @Column(name = "articles")
     private List<Article> articles;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="subscribers",
+            joinColumns=@JoinColumn(name="authorId"),
+            inverseJoinColumns=@JoinColumn(name="subscriberId")
+    )
+    private List<User> subscribers;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="subscribers",
+            joinColumns=@JoinColumn(name="subscriberId"),
+            inverseJoinColumns=@JoinColumn(name="authorId")
+    )
+    private List<User> subscribedTo;
+
     String email;
     String education;
 
@@ -58,9 +72,9 @@ public class User extends BaseEntity implements UserDetails {
 
     public List<String> getAuthoritiesStrings() {
         List<String> res = new ArrayList<>();
-        for (Role role: authorities) {res.add(role.toString());}
+        for (Role role : authorities) {
+            res.add(role.toString());
+        }
         return res;
     }
-
-    //TODO: subscribers
 }

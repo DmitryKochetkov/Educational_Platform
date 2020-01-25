@@ -83,6 +83,13 @@ public class UserController {
         article.setHeader(header);
         article.setHashtags(new ArrayList<>()); //TODO: hashtags json
         articleService.create(article, html);
-        return "redirect:/user/articles";
+        return "redirect:/user/articles"; //TODO: fix bug with last article
+    }
+
+    @RequestMapping("/subscribe")
+    public String subscriber(@RequestParam(name = "author_id") Long author_id) {
+        Long user_id = userService.findLoggedIn().getId();
+        userService.subscribe(author_id, user_id);
+        return "redirect:/user";
     }
 }

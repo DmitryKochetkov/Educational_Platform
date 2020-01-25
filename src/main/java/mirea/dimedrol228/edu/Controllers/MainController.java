@@ -44,6 +44,16 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/faq")
+    public String faq() {
+        return "faq";
+    }
+
+    @GetMapping("/feed")
+    public String feed() {
+        return "feed";
+    }
+
     @GetMapping("/signup")
     public String signup() {
         return "signup";
@@ -75,6 +85,8 @@ public class MainController {
         user.setAccountNonLocked(true);
         user.setAccountNonExpired(true);
         user.setCredentialsNonExpired(true);
+        user.setSubscribers(new ArrayList<>());
+        user.setSubscribedTo(new ArrayList<>());
         List<Role> roles = new ArrayList<>();
         switch (role) {
             case "author":

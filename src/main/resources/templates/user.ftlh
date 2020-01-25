@@ -30,6 +30,7 @@
                             <#else>
                                 <li>Пользователь: ${viewed.getUsername()}</li>
                                 <li>Электронная почта: ${viewed.getEmail()}</li>
+                                <li><a href="/user/subscribe?author_id=${viewed.getId()}">Подписаться</a></li>
                         </#if>
                         <#if viewed?? && viewed.getUsername() == principal.getUsername()>
                             <li><a href="/error" class="blue">Запросить смену пароля</a></li>
@@ -58,8 +59,7 @@
             <div class="cab__info">
 
                 <ul>
-                    <li>Подписчиков:</li>
-<#--                    <li>Статей: ${viewed.getArticles()?size}</li>-->
+                    <li>Подписчиков: ${viewed.getSubscribers()?size}</li>
                     <li>Статей: ${viewed.getArticles()?size}</li>
                     <li>Учеников: </li>
                     <li>Проведено уроков на портале: </li>

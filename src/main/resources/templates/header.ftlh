@@ -9,7 +9,7 @@
             <nav class="menu">
                 <ul class="menu__list">
                     <li><a href="/">Главная</a></li>
-                    <li><a href="/article">Статьи</a></li>
+                    <li><a href="/feed">Статьи</a></li>
                     <li><a href="/forum">Форум</a></li>
                     <li><a href="/faq">F.A.Q.</a></li>
                 </ul>

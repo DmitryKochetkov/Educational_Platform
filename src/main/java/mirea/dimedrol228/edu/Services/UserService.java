@@ -99,4 +99,11 @@ public class UserService implements UserDetailsService {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return user;
     }
+
+    public void subscribe(Long author_id, Long user_id) {
+        User author = findById(author_id);
+        User user = findById(user_id);
+        author.getSubscribers().add(user);
+        userRepository.save(author);
+    }
 }
