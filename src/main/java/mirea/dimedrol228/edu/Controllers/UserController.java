@@ -3,6 +3,7 @@ package mirea.dimedrol228.edu.Controllers;
 import lombok.extern.slf4j.Slf4j;
 import mirea.dimedrol228.edu.Domain.Article;
 import mirea.dimedrol228.edu.Domain.User;
+import mirea.dimedrol228.edu.Repositories.RoleRepository;
 import mirea.dimedrol228.edu.Services.ArticleService;
 import mirea.dimedrol228.edu.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class UserController {
     UserService userService;
 
     @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
     ArticleService articleService;
 
     @Transactional
@@ -37,11 +41,14 @@ public class UserController {
         User principal = (User) authentication.getPrincipal();
         model.addAttribute("principal", principal);
         model.addAttribute("viewed", principal);
-        if (id != null ) {//&& id != principal.getId()
+        model.addAttribute("is_admin", principal.getAuthorities().contains(roleRepository.findByAuthority("ROLE_ADMIN")));
+        if (id != null) {//&& id != principal.getId()
             User viewed = userService.findById(id);
             if (viewed == null)
                 return "/error";
             model.addAttribute("viewed", viewed);
+            if (viewed.getAuthorities().contains(roleRepository.findByAuthority("ROLE_ADMIN")))
+                model.addAttribute("is_admin", true);
         }
         else if (id == null)
             return "redirect:/user?id=" + userService.findByUsername(principal.getUsername()).getId();
@@ -87,9 +94,16 @@ public class UserController {
     }
 
     @RequestMapping("/subscribe")
-    public String subscriber(@RequestParam(name = "author_id") Long author_id) {
+    public String subscribe(@RequestParam(name = "author_id") Long author_id) {
         Long user_id = userService.findLoggedIn().getId();
         userService.subscribe(author_id, user_id);
+        return "redirect:/user";
+    }
+
+    @RequestMapping("/unsubscribe")
+    public String unsubscribe(@RequestParam(name = "author_id") Long author_id) {
+        Long user_id = userService.findLoggedIn().getId();
+        userService.unsubscribe(author_id, user_id);
         return "redirect:/user";
     }
 }

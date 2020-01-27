@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -48,14 +49,14 @@ public class User extends BaseEntity implements UserDetails {
             joinColumns=@JoinColumn(name="authorId"),
             inverseJoinColumns=@JoinColumn(name="subscriberId")
     )
-    private List<User> subscribers;
+    private Set<User> subscribers;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="subscribers",
             joinColumns=@JoinColumn(name="subscriberId"),
             inverseJoinColumns=@JoinColumn(name="authorId")
     )
-    private List<User> subscribedTo;
+    private Set<User> subscribedTo;
 
     String email;
     String education;

@@ -16,9 +16,16 @@
         <h1>Мои статьи</h1>
 
         <ul class="article__list">
-            <#list principal.getArticles() as article>
-            <li><a href="/user/articles?id=${article.getId()}">${article.getHeader()}</a> (обновлена ${article.getUpdated()})</li>
-            </#list>
+            <#if principal.getArticles()?size != 0>
+                <#list principal.getArticles() as article>
+                    <li><a href="/user/articles?id=${article.getId()}">${article.getHeader()}</a> (обновлена ${article.getUpdated()})</li>
+                </#list>
+
+            <#else>
+                <p><i>Нет статей!</i></p>
+            </#if>
+
+
 
         </ul>
         <br>

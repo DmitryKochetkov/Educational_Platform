@@ -2,6 +2,7 @@ package mirea.dimedrol228.edu.Controllers;
 
 import mirea.dimedrol228.edu.Domain.Hashtag;
 import mirea.dimedrol228.edu.Repositories.HashtagRepository;
+import mirea.dimedrol228.edu.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,19 @@ public class AdminController {
     @Autowired
     HashtagRepository hashtagRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping
     public String admin() {
         return "admin";
     } //TODO: header
+
+    @GetMapping("/manage-users")
+    public String manage_users(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "manage-users";
+    }
 
     @GetMapping("/manage-hashtags")
     public String manage_hashtags() {

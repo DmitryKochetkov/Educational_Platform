@@ -13,8 +13,9 @@
     <div class="container">
         <h1>Администратор</h1>
         <ul>
-            <li><a href="/admin/manage-hashtags">Управление хештегами</a></li>
             <li><a href="/admin/manage-users">Управление пользователями</a></li>
+            <li><a href="/admin/manage-hashtags">Управление хештегами</a></li>
+            <li><a href="/admin/manage-articles">Управление статьями</a></li>
         </ul>
     </div>
 

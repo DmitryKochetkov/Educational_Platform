@@ -26,10 +26,6 @@
 
             </div>
 
-            <pre class="language-java" class="line-numbers">
-                <code class="language-java" class="line-numbers">String s1 = new String();</code>
-            </pre>
-
             <div class="after__article__info">
                 <i class="fas fa-eye"></i> 0
                 <i class="far fa-heart"></i> 0

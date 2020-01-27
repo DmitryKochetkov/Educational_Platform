@@ -1,14 +1,10 @@
 package mirea.dimedrol228.edu.Services;
 
 import lombok.extern.slf4j.Slf4j;
-import mirea.dimedrol228.edu.Domain.Role;
 import mirea.dimedrol228.edu.Domain.User;
 import mirea.dimedrol228.edu.Repositories.RoleRepository;
 import mirea.dimedrol228.edu.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,9 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.*;
 
@@ -104,6 +98,16 @@ public class UserService implements UserDetailsService {
         User author = findById(author_id);
         User user = findById(user_id);
         author.getSubscribers().add(user);
+        user.getSubscribedTo().add(author);
+        userRepository.save(author);
+        userRepository.save(user);
+    }
+
+    public void unsubscribe(Long author_id, Long user_id) {
+        User author = findById(author_id);
+        User user = findById(user_id);
+        author.getSubscribers().remove(user);
+        user.getSubscribedTo().remove(author);
         userRepository.save(author);
     }
 }

@@ -22,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -50,7 +51,8 @@ public class MainController {
     }
 
     @GetMapping("/feed")
-    public String feed() {
+    public String feed(Model model) {
+        model.addAttribute("principal", userService.findLoggedIn());
         return "feed";
     }
 
@@ -85,15 +87,17 @@ public class MainController {
         user.setAccountNonLocked(true);
         user.setAccountNonExpired(true);
         user.setCredentialsNonExpired(true);
-        user.setSubscribers(new ArrayList<>());
-        user.setSubscribedTo(new ArrayList<>());
+        user.setSubscribers(new HashSet<>());
+        user.setSubscribedTo(new HashSet<>());
         List<Role> roles = new ArrayList<>();
         switch (role) {
             case "author":
+                roles.add(roleRepository.findByAuthority("ROLE_USER"));
                 roles.add(roleRepository.findByAuthority("ROLE_AUTHOR"));
                 break;
 
             case "tutor":
+                roles.add(roleRepository.findByAuthority("ROLE_USER"));
                 roles.add(roleRepository.findByAuthority("ROLE_AUTHOR"));
                 roles.add(roleRepository.findByAuthority("ROLE_TUTOR"));
                 break;

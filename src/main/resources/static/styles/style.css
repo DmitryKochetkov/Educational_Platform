@@ -403,3 +403,15 @@ label {
 	font-size: 16px;
 	line-height: 1.5;
 }
+
+/* Info tables */
+.info {
+	width: max-content;
+	padding: 0 3px;
+	font-size: 12pt;
+	font-family: "Source Code Pro", monospace;
+	color: white;
+	background-color: #043A6B;
+	display: inline;
+	margin: 10px;
+}

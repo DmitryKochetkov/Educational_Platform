@@ -25,8 +25,15 @@
                 <div class="cab__info__inner">
                     <ul>
                         <#if viewed?? && viewed.getUsername() == principal.getUsername()>
-                                <li>Пользователь: ${principal.getUsername()}</li>
+                                <li>Пользователь: ${principal.getUsername()}
+                                    <#if is_admin>
+                                        <div class="info">Admin</div>
+                                    </#if>
+                                </li>
                                 <li>Электронная почта: ${viewed.getEmail()}</li>
+
+
+
                             <#else>
                                 <li>Пользователь: ${viewed.getUsername()}</li>
                                 <li>Электронная почта: ${viewed.getEmail()}</li>
