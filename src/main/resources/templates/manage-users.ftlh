@@ -10,10 +10,15 @@
 </head>
 <body>
     <#include "header.ftlh">
-    <h1>Управление пользователями</h1>
-    <#list users as usr>
-        ${usr.getUsername()}
-        <a href="">Забанить</a>
-    </#list>
+    <div class="container">
+        <h1>Управление пользователями</h1>
+        <#list users as usr>
+            <ul>
+                <li>${usr.getUsername()}</li>
+                <li><a href="">Забанить</a></li>
+            </ul>
+        </#list>
+    </div>
+
 </body>
 </html>
