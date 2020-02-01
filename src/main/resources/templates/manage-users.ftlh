@@ -10,12 +10,16 @@
 </head>
 <body>
     <#include "header.ftlh">
-    <div class="container">
+    <div class="container" style="line-height: 1.5">
         <h1>Управление пользователями</h1>
         <#list users as usr>
             <ul>
-                <li>${usr.getUsername()}</li>
-                <li><a href="">Забанить</a></li>
+                <li>${usr.getUsername()}
+                    <#if !usr.isAccountNonLocked()>
+                        <div class="info" style="background-color: darkred">Banned</div>
+                    </#if>
+                </li>
+                <li><a href="/admin/manage-users/ban?id=${usr.getId()}">Забанить</a></li>
             </ul>
         </#list>
     </div>

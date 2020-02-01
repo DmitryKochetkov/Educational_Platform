@@ -27,7 +27,7 @@ public class User extends BaseEntity implements UserDetails {
             joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") },
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
-    @Column(name = "roles")
+//    @Column(name = "roles")
     List<Role> authorities;
 
     String password;
@@ -37,26 +37,40 @@ public class User extends BaseEntity implements UserDetails {
     boolean isCredentialsNonExpired;
     boolean isEnabled;
 
-    @Column(name = "isOnline")
+    @Column(name = "is_online")
     boolean isOnline = false; //TODO: change when login/logout
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @Column(name = "articles")
     private List<Article> articles;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="subscribers",
-            joinColumns=@JoinColumn(name="authorId"),
-            inverseJoinColumns=@JoinColumn(name="subscriberId")
+            joinColumns=@JoinColumn(name="author_id"),
+            inverseJoinColumns=@JoinColumn(name="subscriber_id")
     )
-    private Set<User> subscribers;
+    private List<User> subscribers;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="subscribers",
-            joinColumns=@JoinColumn(name="subscriberId"),
-            inverseJoinColumns=@JoinColumn(name="authorId")
+            joinColumns=@JoinColumn(name="subscriber_id"),
+            inverseJoinColumns=@JoinColumn(name="author_id")
     )
-    private Set<User> subscribedTo;
+    private List<User> subscribedTo;
+
+    @OneToMany(mappedBy = "course_author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Course> myCourses;
+
+    @ManyToMany
+    @JoinTable(name = "studying",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<Course> studyingCourses;
+
+    @ManyToMany
+    @JoinTable(name = "enrolled",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private List<Course> graduatedCourses;
 
     String email;
     String education;
@@ -69,7 +83,7 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public Long getId() {
         return super.getId();
-    } //TODO: fix - it returns null
+    }
 
     public List<String> getAuthoritiesStrings() {
         List<String> res = new ArrayList<>();
@@ -78,4 +92,6 @@ public class User extends BaseEntity implements UserDetails {
         }
         return res;
     }
+
+
 }

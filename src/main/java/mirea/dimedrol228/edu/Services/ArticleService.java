@@ -39,7 +39,6 @@ public class ArticleService {
             bw.write(html);
             bw.close();
             article.setContent_path(file.getName());
-            //TODO: set author
             article.setCreated(new Date());
             article.setUpdated(new Date());
             articleRepository.save(article);

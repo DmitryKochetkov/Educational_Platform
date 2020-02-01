@@ -60,7 +60,7 @@ public class UserService implements UserDetailsService {
         return result;
     }
 
-    public void delete(Long id) { //TODO: remove from here nahui
+    public void delete(Long id) {
         userRepository.deleteById(id);
         log.info("IN deleteById - user with id {} successfully deleted", id);
     }
@@ -91,14 +91,15 @@ public class UserService implements UserDetailsService {
 
     public User findLoggedIn() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = findByUsername(user.getUsername());
         return user;
     }
 
-    public void subscribe(Long author_id, Long user_id) {
+    public void subscribe(Long author_id, Long user_id) { //TODO: debug
         User author = findById(author_id);
         User user = findById(user_id);
         author.getSubscribers().add(user);
-        user.getSubscribedTo().add(author);
+        //user.getSubscribedTo().add(author);
         userRepository.save(author);
         userRepository.save(user);
     }
@@ -107,7 +108,8 @@ public class UserService implements UserDetailsService {
         User author = findById(author_id);
         User user = findById(user_id);
         author.getSubscribers().remove(user);
-        user.getSubscribedTo().remove(author);
+        //user.getSubscribedTo().remove(author);
         userRepository.save(author);
+        userRepository.save(user);
     }
 }

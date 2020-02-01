@@ -12,8 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,10 +37,15 @@ public class UserController {
                        @RequestParam(required = false) Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
+
+        //TODO: simpler solution
         model.addAttribute("principal", principal);
         model.addAttribute("viewed", principal);
         model.addAttribute("is_admin", principal.getAuthorities().contains(roleRepository.findByAuthority("ROLE_ADMIN")));
         if (id != null) {//&& id != principal.getId()
+            //log
+            if (id == principal.getId() && !principal.isAccountNonLocked())
+                return "user-banned";
             User viewed = userService.findById(id);
             if (viewed == null)
                 return "/error";
@@ -67,12 +70,9 @@ public class UserController {
                               @RequestParam(required = false, name="id") Long article_id) {
         model.addAttribute("principal", userService.findByUsername(userService.findLoggedIn().getUsername()));
         if (article_id == null)
-        return "my-articles";
+        return "user-content";
 
-        Article article = articleService.findById(article_id);
-        model.addAttribute("root", articleService.root);
-        model.addAttribute("article", article);
-        return "article";
+        return "/article?id=" + article_id;
     }
 
     @RequestMapping("/articles/edit")
@@ -93,17 +93,17 @@ public class UserController {
         return "redirect:/user/articles"; //TODO: fix bug with last article
     }
 
-    @RequestMapping("/subscribe")
+    @RequestMapping("/subscribe") //TODO: post method
     public String subscribe(@RequestParam(name = "author_id") Long author_id) {
-        Long user_id = userService.findLoggedIn().getId();
+        Long user_id = userService.findByUsername(userService.findLoggedIn().getUsername()).getId();
         userService.subscribe(author_id, user_id);
-        return "redirect:/user";
+        return "redirect:/user?id=" + author_id;
     }
 
     @RequestMapping("/unsubscribe")
     public String unsubscribe(@RequestParam(name = "author_id") Long author_id) {
         Long user_id = userService.findLoggedIn().getId();
         userService.unsubscribe(author_id, user_id);
-        return "redirect:/user";
+        return "redirect:/user?id=" + author_id;
     }
 }

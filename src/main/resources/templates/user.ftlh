@@ -28,16 +28,25 @@
                                 <li>Пользователь: ${principal.getUsername()}
                                     <#if is_admin>
                                         <div class="info">Admin</div>
+                                        <#if !viewed.isAccountNonLocked()>
+                                            <div class="info" style="background-color: darkred">Locked</div>
+                                        </#if>
                                     </#if>
                                 </li>
                                 <li>Электронная почта: ${viewed.getEmail()}</li>
 
-
-
                             <#else>
                                 <li>Пользователь: ${viewed.getUsername()}</li>
                                 <li>Электронная почта: ${viewed.getEmail()}</li>
-                                <li><a href="/user/subscribe?author_id=${viewed.getId()}">Подписаться</a></li>
+
+
+<#--                                <#if principal.getSubscribedTo()?seq_contains(viewed)>-->
+<#--                                    <li><a href="/user/unsubscribe?author_id=${viewed.getId()}">Отписаться</a></li>-->
+<#--                                    <li>${principal}</li>-->
+<#--                                    <li>${viewed}</li>-->
+<#--                                    <#else>-->
+<#--                                    <li><a href="/user/subscribe?author_id=${viewed.getId()}">Подписаться</a></li>-->
+<#--                                </#if>-->
                         </#if>
                         <#if viewed?? && viewed.getUsername() == principal.getUsername()>
                             <li><a href="/error" class="blue">Запросить смену пароля</a></li>
@@ -53,7 +62,7 @@
                 <ul>
                     <li><a href="/user/articles" class="blue">Мои статьи</a></li>
                     <li><a href="/user/star" class="blue">Избранное</a></li>
-                    <li><a href="/user/lessons" class="blue">Мои уроки</a></li>
+                    <li><a href="/user/courses" class="blue">Мои курсы</a></li>
                     <#if principal.getAuthoritiesStrings()?seq_contains("ROLE_ADMIN")>
                         <li><a href="/admin">Панель администратора</a></li>
                     </#if>
@@ -68,7 +77,7 @@
                 <ul>
                     <li>Подписчиков: ${viewed.getSubscribers()?size}</li>
                     <li>Статей: ${viewed.getArticles()?size}</li>
-                    <li>Учеников: </li>
+                    <li>Курсов: , учеников: </li>
                     <li>Проведено уроков на портале: </li>
                 </ul>
             </div>

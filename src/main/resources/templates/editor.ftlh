@@ -9,6 +9,7 @@
     <#include "style.ftlh">
     <script src="https://cdn.tiny.cloud/1/zeh1mk4pppdr1bmwej4qod1hujgmu71142f1salp5swmhzcx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({
+        height: "400",
         selector: 'textarea',
         plugins: "codesample",
         codesample_languages: [

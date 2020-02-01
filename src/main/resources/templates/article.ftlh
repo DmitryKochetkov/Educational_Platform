@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>neural.net</title>
     <#include "style.ftlh">
-
+    <link rel="stylesheet" href="/styles/prism.css">
+    <script src="/js/prism.js"></script>
 </head>
 <body>
     <#include "header.ftlh">
