@@ -11,7 +11,7 @@ import java.util.Locale;
 @Entity
 @Table(name = "articles")
 @Data
-public class Article extends BaseEntity {
+public class Article extends CourseContent {
     @Column(name = "header")
     private String header;
 
@@ -37,4 +37,6 @@ public class Article extends BaseEntity {
 
         return date;
     }
+
+    //TODO: Set<User> views;
 }
